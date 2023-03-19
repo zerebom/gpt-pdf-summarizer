@@ -1,22 +1,21 @@
+import io
 import streamlit as st
 import requests
-import io
-
-FASTAPI_URL = "http://localhost:8000"
+from PIL import Image
 
 def main():
-    st.title("PDF Text Extractor")
-    uploaded_file = st.file_uploader("Upload your PDF", type=["pdf"])
+    st.title("PDF Summarizer")
 
-    if uploaded_file is not None:
-        response = requests.post(
-            f"{FASTAPI_URL}/upload_pdf/",
-            files={"pdf_file": ("pdf_file.pdf", uploaded_file.getvalue(), "application/pdf")},
-        )
+    pdf_file = st.file_uploader("Upload a PDF file", type="pdf")
+
+    if pdf_file is not None:
+        files = {"pdf_file": pdf_file.getvalue()}
+        response = requests.post("http://localhost:8000/upload_pdf/", files=files)
         response.raise_for_status()
-        text = response.json()["text"]
-        st.write("### Extracted Text")
-        st.write(text)
+        summary = response.json()["summary"]
+
+        st.write("### Summary:")
+        st.write(summary)
 
 if __name__ == "__main__":
     main()
