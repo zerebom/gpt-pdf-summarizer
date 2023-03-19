@@ -606,14 +606,14 @@ files = [
 
 [[package]]
 name = "importlib-metadata"
-version = "6.0.0"
+version = "6.1.0"
 description = "Read metadata from Python packages"
 category = "main"
 optional = false
 python-versions = ">=3.7"
 files = [
-    {file = "importlib_metadata-6.0.0-py3-none-any.whl", hash = "sha256:7efb448ec9a5e313a57655d35aa54cd3e01b7e1fbcf72dce1bf06119420f5bad"},
-    {file = "importlib_metadata-6.0.0.tar.gz", hash = "sha256:e354bedeb60efa6affdcc8ae121b73544a7aa74156d047311948f6d711cd378d"},
+    {file = "importlib_metadata-6.1.0-py3-none-any.whl", hash = "sha256:ff80f3b5394912eb1b108fcfd444dc78b7f1f3e16b16188054bd01cb9cb86f09"},
+    {file = "importlib_metadata-6.1.0.tar.gz", hash = "sha256:43ce9281e097583d758c2c708c4376371261a02c34682491a8e98352365aad20"},
 ]
 
 [package.dependencies]
@@ -1385,14 +1385,14 @@ files = [
 
 [[package]]
 name = "pypdf"
-version = "3.5.2"
+version = "3.6.0"
 description = "A pure-python PDF library capable of splitting, merging, cropping, and transforming PDF files"
 category = "main"
 optional = false
 python-versions = ">=3.6"
 files = [
-    {file = "pypdf-3.5.2-py3-none-any.whl", hash = "sha256:e326d699f42fd163ddbb2fdd9978aa1ba2b610aeb4c07bb6935eda5cdd87ae89"},
-    {file = "pypdf-3.5.2.tar.gz", hash = "sha256:49e0598c417107dde904daf6a62ce731991f51ce98c55d808ac7b3e952904e6d"},
+    {file = "pypdf-3.6.0-py3-none-any.whl", hash = "sha256:1d8f58d47c8219ee082df7e4acab7c5f49ccef122a804553735513cd2db26a31"},
+    {file = "pypdf-3.6.0.tar.gz", hash = "sha256:7d7bd0603f4e87a7064597aa968fcf77a065b596cfbe6e5003a5b00a043db230"},
 ]
 
 [package.dependencies]
@@ -1633,18 +1633,18 @@ full = ["graphene", "itsdangerous", "jinja2", "python-multipart", "pyyaml", "req
 
 [[package]]
 name = "streamlit"
-version = "1.12.0"
+version = "1.20.0"
 description = "The fastest way to build data apps in Python"
 category = "main"
 optional = false
-python-versions = ">=3.7"
+python-versions = ">=3.7, !=3.9.7"
 files = [
-    {file = "streamlit-1.12.0-py2.py3-none-any.whl", hash = "sha256:19f58ae723afaedbc85891c3a159e9576343609036713ecbb73b219a47dfe48d"},
-    {file = "streamlit-1.12.0.tar.gz", hash = "sha256:1bbb406d4eee9acb055e72627212e9f04eea8ef0332f8dfeb6745bdf256c168b"},
+    {file = "streamlit-1.20.0-py2.py3-none-any.whl", hash = "sha256:41a544b8dc618ee65726da3ac76149c5b2bf3da7bde6d50625c4f7ec95e6c9e8"},
+    {file = "streamlit-1.20.0.tar.gz", hash = "sha256:f6e257e033a2532ce9b37c425717a4e885fa4d0e339fa5dcdbbda8d75ec191e9"},
 ]
 
 [package.dependencies]
-altair = ">=3.2.0"
+altair = ">=3.2.0,<5"
 blinker = ">=1.0.0"
 cachetools = ">=4.0"
 click = ">=7.0"
@@ -1652,7 +1652,7 @@ gitpython = "!=3.1.19"
 importlib-metadata = ">=1.4"
 numpy = "*"
 packaging = ">=14.1"
-pandas = ">=0.21.0"
+pandas = ">=0.25,<2"
 pillow = ">=6.2.0"
 protobuf = ">=3.12,<4"
 pyarrow = ">=4.0"
@@ -1663,11 +1663,14 @@ requests = ">=2.4"
 rich = ">=10.11.0"
 semver = "*"
 toml = "*"
-tornado = ">=5.0"
+tornado = ">=6.0.3"
 typing-extensions = ">=3.10.0.0"
 tzlocal = ">=1.1"
 validators = ">=0.2"
 watchdog = {version = "*", markers = "platform_system != \"Darwin\""}
+
+[package.extras]
+snowflake = ["snowflake-snowpark-python"]
 
 [[package]]
 name = "toml"
@@ -1773,14 +1776,14 @@ files = [
 
 [[package]]
 name = "tzlocal"
-version = "4.2"
+version = "4.3"
 description = "tzinfo object for the local timezone"
 category = "main"
 optional = false
-python-versions = ">=3.6"
+python-versions = ">=3.7"
 files = [
-    {file = "tzlocal-4.2-py3-none-any.whl", hash = "sha256:89885494684c929d9191c57aa27502afc87a579be5cdd3225c77c463ea043745"},
-    {file = "tzlocal-4.2.tar.gz", hash = "sha256:ee5842fa3a795f023514ac2d801c4a81d1743bbe642e3940143326b3a00addd7"},
+    {file = "tzlocal-4.3-py3-none-any.whl", hash = "sha256:b44c4388f3d34f25862cfbb387578a4d70fec417649da694a132f628a23367e2"},
+    {file = "tzlocal-4.3.tar.gz", hash = "sha256:3f21d09e1b2aa9f2dacca12da240ca37de3ba5237a93addfd6d593afe9073355"},
 ]
 
 [package.dependencies]
@@ -1788,8 +1791,7 @@ pytz-deprecation-shim = "*"
 tzdata = {version = "*", markers = "platform_system == \"Windows\""}
 
 [package.extras]
-devenv = ["black", "pyroma", "pytest-cov", "zest.releaser"]
-test = ["pytest (>=4.3)", "pytest-mock (>=3.3)"]
+devenv = ["black", "check-manifest", "flake8", "pyroma", "pytest (>=4.3)", "pytest-cov", "pytest-mock (>=3.3)", "zest.releaser"]
 
 [[package]]
 name = "urllib3"
@@ -1992,5 +1994,5 @@ testing = ["big-O", "flake8 (<5)", "jaraco.functools", "jaraco.itertools", "more
 
 [metadata]
 lock-version = "2.0"
-python-versions = "^3.9"
-content-hash = "1eb6e57764e760ff3e38b975c3b46dbcaa77e7e70ede51716c9d25a3fbcbd161"
+python-versions = ">=3.9,<3.9.7 || >3.9.7,<4.0"
+content-hash = "c38a7c9e17989e0d28fa1bbd25823ac6c1737fc3bb047eaf2a9b9c166ee2a610"
