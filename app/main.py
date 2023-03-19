@@ -10,25 +10,26 @@ def main():
     pdf_file = st.file_uploader("Upload a PDF file", type="pdf")
 
     if pdf_file is not None:
-        files = {"pdf_file": pdf_file.getvalue()}
-        response = requests.post("http://localhost:8000/upload_pdf/", files=files)
-        response.raise_for_status()
-        summary = response.json()["summary"]
+        if "messages" not in st.session_state:
+            st.session_state.messages = []
+        if "summary" not in st.session_state:
+            st.session_state.summary = handle_pdf_upload(pdf_file)
+            st.session_state.messages.append({"role": "assistant", "content": st.session_state.summary})
 
-        st.write("### Summary:")
-        st.write(summary)
+    question = st.text_input("Type your question here")
 
-        # 新しい UI を追加
-        st.write("### Ask questions about the summary:")
-        messages = [
-            {"role": "system", "content": "You are a helpful assistant."},
-            {"role": "assistant", "content": summary},
-        ]
-        question = st.text_input("Type your question here")
-        if st.button("Ask"):
-            answer = continue_conversation(messages, question)
-            st.write("### Answer:")
-            st.write(answer)
+    if st.button("Ask", key="ask_button"):
+        if question:
+            answer = continue_conversation(st.session_state.messages, question)
+            st.session_state.messages.append({"role": "user", "content": question})
+            st.session_state.messages.append({"role": "assistant", "content": answer})
+
+    if "messages" in st.session_state:
+        for message in st.session_state.messages:
+            if message["role"] == "assistant":
+                st.write("Assistant: ", message["content"])
+            else:
+                st.write("You: ", message["content"])
 
 if __name__ == "__main__":
     main()
