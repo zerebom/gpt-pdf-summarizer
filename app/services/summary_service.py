@@ -1,13 +1,27 @@
 
 import os
 import textwrap
+from typing import Optional
 
 import openai
+import streamlit as st
 
-openai.api_key = os.environ.get("OPENAI_API_KEY")
+from .conversations import Conversations
+
+
+@st.cache_resource
+def set_openai_api_key(API_KEY: Optional[str] = None):
+
+    if 'OPENAI_API_KEY' in os.environ:
+        openai.api_key = os.environ.get("OPENAI_API_KEY")
+
+    if API_KEY is not None:
+        openai.api_key = API_KEY
+
+    print("set API_KEY: ", openai.api_key)
 
 def generate_summary(text: str, max_length: int = 100) -> str:
-    prompt = f"下記文章を日本語で要約して:\n\n{text}\n"
+    prompt = f"下記文章を日本語で{max_length}字で要約して:\n\n{text}\n"
     print(prompt)
 
     completion = openai.ChatCompletion.create(
