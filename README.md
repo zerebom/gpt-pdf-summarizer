@@ -22,6 +22,10 @@ cd pdf-summarizer
 2. Build and run the Docker container using Docker Compose:
 
 This command will build the Docker image, start the container, and run both FastAPI and Streamlit applications.
+```
+docker-compose up --build
+```
+
 
 3. Access the applications:
 
