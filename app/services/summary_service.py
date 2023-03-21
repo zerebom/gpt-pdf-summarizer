@@ -23,29 +23,36 @@ def generate_summary(text: str, max_length: int = 100) -> str:
     summary = completion.choices[0].message["content"]
     return summary
 
-def summarize_large_text(text: str, max_chars_per_request: int = 1000, max_summary_length: int = 100) -> str:
+def summarize_large_text(conversations: Conversations,
+                         text: str,
+                         max_summarize_chars: int = 9000,
+                         max_chars_per_request: int = 4000,
+                         summary_length: int = 1000) -> Conversations:
     wrapped_text = textwrap.wrap(text, max_chars_per_request)
-    summarized_text = ""
+    length =  max_summarize_chars // max_chars_per_request
+    wrapped_text = wrapped_text[:length]
 
-    for chunk in wrapped_text:
-        summary_chunk = generate_summary(chunk, max_summary_length)
-        summarized_text += summary_chunk + " "
-        break
+    progress_text = "Operation in progress. Please wait."
+    my_bar = st.progress(0, text=progress_text)
 
-    return summarized_text.strip()
+    for idx, chunk in enumerate(wrapped_text):
+        my_bar.progress(idx, text=progress_text)
+        summary_chunk = generate_summary(chunk, summary_length)
+        conversations.add_message("user", f"summarize: {chunk}")
+        conversations.add_message("assistant", summary_chunk)
 
-def continue_conversation(messages: list[dict[str, str]], question: str) -> str:
-    print("insert:",messages)
-    messages.append({"role": "user", "content": question})
+    return conversations
+
+
+def continue_conversation(conversations: Conversations, question: str) -> Conversations:
+    conversations.add_message("user", question)
 
     response = openai.ChatCompletion.create(
         model="gpt-3.5-turbo",
-        messages=messages
+        messages= conversations.get_message_dict_list()
     )
 
-    print("continue:",response)
-
     answer = response.choices[0].message["content"]
-    messages.append({"role": "assistant", "content": answer})
+    conversations.add_message("assistant", answer)
 
-    return answer
+    return conversations
