@@ -8,3 +8,5 @@ services:
       - "8501:8501"
     volumes:
       - ./app:/app/app
+    environment:
+      - OPENAI_API_KEY=${OPENAI_API_KEY}

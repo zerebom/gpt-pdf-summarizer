@@ -12,7 +12,8 @@ COPY pyproject.toml poetry.lock /app/
 
 # Install dependencies
 RUN poetry config virtualenvs.create false \
-  && poetry install --no-interaction --no-ansi
+  && poetry install --no-interaction --no-ansi \
+  && poetry shell
 
 # Copy the start_services.sh script
 COPY start_services.sh /app/
