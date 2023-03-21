@@ -1673,6 +1673,21 @@ watchdog = {version = "*", markers = "platform_system != \"Darwin\""}
 snowflake = ["snowflake-snowpark-python"]
 
 [[package]]
+name = "streamlit-chat"
+version = "0.0.2.2"
+description = "A streamlit component, to make chatbots"
+category = "main"
+optional = false
+python-versions = ">=3.8"
+files = [
+    {file = "streamlit-chat-0.0.2.2.tar.gz", hash = "sha256:539a526e680628b09ab5b06547fb1dd03aa846798c027002bb1e971e9fefd303"},
+    {file = "streamlit_chat-0.0.2.2-py3-none-any.whl", hash = "sha256:cd5cda5672e8f9c882fdaaca0c2710465ae8d82bc44f5c1cc71fe89bc1c219cb"},
+]
+
+[package.dependencies]
+streamlit = ">=0.63"
+
+[[package]]
 name = "toml"
 version = "0.10.2"
 description = "Python Library for Tom's Obvious, Minimal Language"
@@ -1995,4 +2010,4 @@ testing = ["big-O", "flake8 (<5)", "jaraco.functools", "jaraco.itertools", "more
 [metadata]
 lock-version = "2.0"
 python-versions = ">=3.9,<3.9.7 || >3.9.7,<4.0"
-content-hash = "c38a7c9e17989e0d28fa1bbd25823ac6c1737fc3bb047eaf2a9b9c166ee2a610"
+content-hash = "ffca289ddfbc263e9f7170286ebe2056d3669be0c07fc87b82c427f8170bcaf3"

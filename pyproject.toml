@@ -12,6 +12,7 @@ openai = "^0.27.2"
 uvicorn = "^0.15.0"
 pypdf = "^3.5.2"
 python-multipart = "^0.0.6"
+streamlit-chat = "^0.0.2.2"
 
 [tool.poetry.dev-dependencies]
 black = "^21.9b0"
