@@ -1,4 +1,5 @@
 import io
+from typing import Optional
 
 import requests
 import streamlit as st
@@ -8,7 +9,7 @@ from streamlit_chat import message as chat_message
 
 
 @st.cache_resource
-def handle_pdf_upload(pdf_file):
+def handle_pdf_upload(pdf_file: io.BytesIO) -> Optional[Conversations]:
     if pdf_file is not None:
         files = {"pdf_file": pdf_file.getvalue()}
         response = requests.post("http://localhost:8000/upload_pdf/", files=files)
