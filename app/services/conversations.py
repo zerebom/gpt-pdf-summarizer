@@ -1,16 +1,16 @@
 class Message:
     def __init__(self, role: str, content: str):
-        self.role = role
-        self.content = content
+        self.role: str = role
+        self.content: str = content
 
     def to_dict(self)-> dict[str,str]:
         return {"role": self.role, "content": self.content}
 
 class Conversations:
     def __init__(self):
-        self.messages = []
+        self.messages: list[Message] = []
 
-    def add_message(self, role: str, content: str):
+    def add_message(self, role: str, content: str) -> None:
         message = Message(role, content)
         self.messages.append(message)
 
