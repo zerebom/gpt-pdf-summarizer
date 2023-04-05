@@ -1,5 +1,8 @@
 # PDF Summarizer with GPT and Streamlit
 
+### [Blog](https://zenn.dev/zerebom/articles/1ffd51da420c9e)
+### [Slide](https://speakerdeck.com/zerebom/chatgpttonohui-hua-nodetafen-xi-kai-fa-dui-hua-wozui-shi-hua-surutamenozhi-zhen-tote-xing)
+
 ## About
 This project is a PDF summarizer that leverages GPT AI to generate summaries from uploaded PDF files. The application uses FastAPI for the backend and Streamlit for the frontend. The project was created with the assistance of AI language models.
 
