@@ -4,7 +4,7 @@ services:
   pdf-summariser:
     build: .
     ports:
-      - "8000:8000"
+      - "8001:8001"
       - "8501:8501"
     volumes:
       - ./app:/app/app

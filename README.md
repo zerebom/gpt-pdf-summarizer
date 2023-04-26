@@ -32,7 +32,7 @@ docker-compose up --build
 
 3. Access the applications:
 
-- FastAPI: Open your browser and navigate to `http://localhost:8000`. You will see the FastAPI documentation (Swagger UI).
+- FastAPI: Open your browser and navigate to `http://localhost:8001`. You will see the FastAPI documentation (Swagger UI).
 - Streamlit: Open your browser and navigate to `http://localhost:8501`. You will see the Streamlit user interface where you can upload PDF files and get summaries.
 
 ### Usage
