@@ -12,7 +12,7 @@ from streamlit_chat import message as chat_message
 def handle_pdf_upload(pdf_file: io.BytesIO) -> Optional[Conversations]:
     if pdf_file is not None:
         files = {"pdf_file": pdf_file.getvalue()}
-        response = requests.post("http://localhost:8000/upload_pdf/", files=files)
+        response = requests.post("http://localhost:8001/upload_pdf/", files=files)
         response.raise_for_status()
 
         messages = response.json()["conversations"]["messages"]
