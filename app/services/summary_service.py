@@ -1,4 +1,3 @@
-
 import os
 import textwrap
 from typing import Optional
@@ -21,7 +20,8 @@ def set_openai_api_key(API_KEY: Optional[str] = None):
     print("set API_KEY: ", openai.api_key)
 
 def generate_summary(text: str, max_length: int = 100) -> str:
-    prompt = f"下記文章を日本語で{max_length}字で要約して:\n\n{text}\n"
+    # The max_lenght parameter is now ignored.
+    prompt = f"Summarize this document :\n\n{text}\n"
     print(prompt)
 
     completion = openai.ChatCompletion.create(
