@@ -22,7 +22,13 @@ These instructions will help you set up and run the project on your local machin
 git clone https://github.com/your_username/pdf-summarizer.git
 cd pdf-summarizer
 ```
-2. Build and run the Docker container using Docker Compose:
+2. Add your API Key in the docker-compose.yml file
+```
+environment:
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+```
+
+3. Build and run the Docker container using Docker Compose:
 
 This command will build the Docker image, start the container, and run both FastAPI and Streamlit applications.
 ```
@@ -30,7 +36,7 @@ docker-compose up --build
 ```
 
 
-3. Access the applications:
+4. Access the applications:
 
 - FastAPI: Open your browser and navigate to `http://localhost:8001`. You will see the FastAPI documentation (Swagger UI).
 - Streamlit: Open your browser and navigate to `http://localhost:8501`. You will see the Streamlit user interface where you can upload PDF files and get summaries.
