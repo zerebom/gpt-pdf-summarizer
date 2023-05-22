@@ -29,4 +29,5 @@ EXPOSE 8501
 ENV PYTHONUNBUFFERED=1
 
 # Run the command to start the FastAPI app
+RUN  apt-get update && apt-get install -y dos2unix && dos2unix start_services.sh
 CMD ["sh", "start_services.sh"]
