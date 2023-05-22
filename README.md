@@ -19,8 +19,8 @@ These instructions will help you set up and run the project on your local machin
 
 1. Clone the repository:
 ```
-git clone https://github.com/your_username/pdf-summarizer.git
-cd pdf-summarizer
+git clone https://github.com/zerebom/gpt-pdf-summarizer.git
+cd gpt-pdf-summarizer
 ```
 2. Build and run the Docker container using Docker Compose:
 
